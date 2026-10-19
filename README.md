@@ -1,6 +1,6 @@
-# Grafos - Representacao Computacional
+# Trabalho de Grafo
 
-Atividades avaliativas 1, 2 e 3: algoritmo que trabalha com grafos usando as tres representacoes vistas em aula.
+atividade utilizando grafo estudado em sala
 
 ## Integrantes
 
@@ -31,10 +31,7 @@ Os tres programas tem o mesmo menu:
 
 Quando o programa abre ele pergunta se o grafo e direcionado ou nao. No direcionado o grau aparece separado em entrada e saida.
 
-## Como rodar
-
-Precisa do Python 3.
-
+feito em Python
 ```
 python lista_adjacencia.py
 python matriz_adjacencia.py
