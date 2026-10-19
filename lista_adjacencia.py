@@ -1,13 +1,3 @@
-# Atividade Avaliativa 1 - Grafos usando Lista de Adjacencia
-# Integrantes:
-# - Carlos Heinrich Ribeiro de Oliveira - RA 2025953
-# - Luiz Antonio Marcussi Neto - RA 2035498
-# - Marcos Tulio Lopes Junior - RA 2036120
-# - Mateus Oliveira Augusto - RA 2037913
-
-# o grafo fica num dicionario, a chave e o vertice e o valor
-# e a lista com os vizinhos dele
-# ex: {"A": ["B", "C"], "B": ["A"], "C": ["A"]}
 grafo = {}
 direcionado = False
 
@@ -29,7 +19,7 @@ def remover_vertice(v):
         return
     del grafo[v]
 
-    # precisa tirar o v da lista dos outros vertices tambem
+    
     for u in grafo:
         while v in grafo[u]:
             grafo[u].remove(v)
@@ -51,7 +41,6 @@ def inserir_aresta(x, y):
         return
 
     grafo[x].append(y)
-    # se nao e direcionado coloca nos dois (laco so coloca uma vez)
     if not direcionado and x != y:
         grafo[y].append(x)
     print("Aresta", x, "-", y, "inserida")
