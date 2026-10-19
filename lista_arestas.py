@@ -1,14 +1,5 @@
-# Atividade Avaliativa 3 - Grafos usando Lista de Arestas
-# Integrantes:
-# - Carlos Heinrich Ribeiro de Oliveira - RA 2025953
-# - Luiz Antonio Marcussi Neto - RA 2035498
-# - Marcos Tulio Lopes Junior - RA 2036120
-# - Mateus Oliveira Augusto - RA 2037913
-
-# a lista de arestas sozinha nao consegue guardar vertice que nao tem aresta
-# (tipo o V6 do exemplo da aula), por isso tem uma lista separada so pros vertices
 vertices = []
-arestas = []  # cada aresta e uma tupla (origem, destino)
+arestas = [] 
 direcionado = False
 
 
@@ -34,7 +25,7 @@ def remover_vertice(v):
         return
     vertices.remove(v)
 
-    # tira todas as arestas que usam esse vertice
+   
     nova = []
     for a in arestas:
         if a[0] != v and a[1] != v:
@@ -47,7 +38,6 @@ def existe_aresta(x, y):
     for a in arestas:
         if a[0] == x and a[1] == y:
             return True
-        # se nao for direcionado, (x,y) e (y,x) sao a mesma aresta
         if not direcionado and a[0] == y and a[1] == x:
             return True
     return False
@@ -118,7 +108,6 @@ def verificar_percurso(caminho):
             print("O vertice", v, "nao existe no grafo")
             return
 
-    # vai olhando de 2 em 2 se tem aresta entre eles
     for i in range(len(caminho) - 1):
         if not existe_aresta(caminho[i], caminho[i + 1]):
             print("Percurso NAO e possivel, nao tem aresta de", caminho[i], "para", caminho[i + 1])
