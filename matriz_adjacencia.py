@@ -1,13 +1,3 @@
-# Atividade Avaliativa 2 - Grafos usando Matriz de Adjacencia
-# Integrantes:
-# - Carlos Heinrich Ribeiro de Oliveira - RA 2025953
-# - Luiz Antonio Marcussi Neto - RA 2035498
-# - Marcos Tulio Lopes Junior - RA 2036120
-# - Mateus Oliveira Augusto - RA 2037913
-
-# a lista vertices guarda o nome de cada vertice, e a posicao dele
-# nessa lista e o indice da linha/coluna dele na matriz
-# matriz[i][j] = 1 quer dizer que tem aresta do vertice i pro vertice j
 vertices = []
 matriz = []
 direcionado = False
@@ -28,10 +18,8 @@ def inserir_vertice(v):
         return
 
     vertices.append(v)
-    # coloca uma coluna nova em cada linha que ja existe
     for linha in matriz:
         linha.append(0)
-    # e cria a linha do vertice novo
     matriz.append([0] * len(vertices))
     print("Vertice", v, "inserido")
 
@@ -43,9 +31,9 @@ def remover_vertice(v):
         return
 
     vertices.pop(i)
-    matriz.pop(i)  # tira a linha
+    matriz.pop(i) 
     for linha in matriz:
-        linha.pop(i)  # tira a coluna
+        linha.pop(i)  
     print("Vertice", v, "removido")
 
 
@@ -94,7 +82,7 @@ def mostrar_graus():
     n = len(vertices)
     for i in range(n):
         if direcionado:
-            # soma da linha = saida, soma da coluna = entrada
+            
             saida = sum(matriz[i])
             entrada = 0
             for k in range(n):
@@ -102,7 +90,7 @@ def mostrar_graus():
             print(vertices[i], "-> entrada:", entrada, "| saida:", saida, "| total:", entrada + saida)
         else:
             grau = sum(matriz[i])
-            # laco conta 2 no grau
+           
             if matriz[i][i] == 1:
                 grau += 1
             print(vertices[i], "-> grau", grau)
