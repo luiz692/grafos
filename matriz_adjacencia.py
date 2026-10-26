@@ -13,6 +13,9 @@ def inserir_vertice(v):
     if v == "":
         print("Nome invalido")
         return
+    if " " in v:
+        print("O nome do vertice nao pode ter espaco")
+        return
     if v in vertices:
         print("O vertice", v, "ja existe")
         return
@@ -128,14 +131,21 @@ def mostrar_matriz():
         print("Grafo vazio")
         return
 
-    print("   ", end="")
+    # largura da coluna depende do maior nome
+    larg = 1
     for v in vertices:
-        print(v.rjust(3), end="")
+        if len(v) > larg:
+            larg = len(v)
+    larg += 2
+
+    print(" " * larg, end="")
+    for v in vertices:
+        print(v.rjust(larg), end="")
     print()
     for i in range(len(vertices)):
-        print(vertices[i].rjust(3), end="")
+        print(vertices[i].rjust(larg), end="")
         for valor in matriz[i]:
-            print(str(valor).rjust(3), end="")
+            print(str(valor).rjust(larg), end="")
         print()
 
 
@@ -155,7 +165,10 @@ def menu():
 
 
 resp = input("O grafo e direcionado? (s/n): ").strip().lower()
-direcionado = resp == "s"
+while resp not in ("s", "sim", "n", "nao", "não"):
+    print("Responde so com s ou n")
+    resp = input("O grafo e direcionado? (s/n): ").strip().lower()
+direcionado = resp in ("s", "sim")
 
 while True:
     menu()
@@ -185,7 +198,9 @@ while True:
     elif op == "6":
         x = input("De qual vertice: ").strip().upper()
         y = input("Para qual vertice: ").strip().upper()
-        if existe_aresta(x, y):
+        if x not in vertices or y not in vertices:
+            print("Um dos vertices nao existe no grafo")
+        elif existe_aresta(x, y):
             print("Existe aresta de", x, "para", y)
         else:
             print("Nao existe aresta de", x, "para", y)

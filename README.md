@@ -38,4 +38,4 @@ python matriz_adjacencia.py
 python lista_arestas.py
 ```
 
-Para verificar um percurso, digita os vertices separados por espaco, por exemplo: `A B C D`
+Para verificar um percurso, digita os vertices separados por espaco, por exemplo: `A B C D`. Por isso o nome do vertice nao pode ter espaco.

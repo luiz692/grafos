@@ -11,6 +11,9 @@ def inserir_vertice(v):
     if v == "":
         print("Nome invalido")
         return
+    if " " in v:
+        print("O nome do vertice nao pode ter espaco")
+        return
     if existe_vertice(v):
         print("O vertice", v, "ja existe")
         return
@@ -150,7 +153,10 @@ def menu():
 
 
 resp = input("O grafo e direcionado? (s/n): ").strip().lower()
-direcionado = resp == "s"
+while resp not in ("s", "sim", "n", "nao", "não"):
+    print("Responde so com s ou n")
+    resp = input("O grafo e direcionado? (s/n): ").strip().lower()
+direcionado = resp in ("s", "sim")
 
 while True:
     menu()
@@ -180,7 +186,9 @@ while True:
     elif op == "6":
         x = input("De qual vertice: ").strip().upper()
         y = input("Para qual vertice: ").strip().upper()
-        if existe_aresta(x, y):
+        if not existe_vertice(x) or not existe_vertice(y):
+            print("Um dos vertices nao existe no grafo")
+        elif existe_aresta(x, y):
             print("Existe aresta de", x, "para", y)
         else:
             print("Nao existe aresta de", x, "para", y)
